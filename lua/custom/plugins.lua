@@ -4,6 +4,7 @@ local plugins = {
     opts = {
       ensure_installed = {
         "gopls",
+        "typescript-language-server",
       },
     },
   },
@@ -46,6 +47,13 @@ local plugins = {
     build = function()
       vim.cmd [[silent! GoInstallDeps]]
     end,
+  },
+  {
+    "mfussenegger/nvim-lint",
+    event = "VeryLazy",
+    config = function()
+      require "custom.configs.lint"
+    end
   },
 }
 return plugins
